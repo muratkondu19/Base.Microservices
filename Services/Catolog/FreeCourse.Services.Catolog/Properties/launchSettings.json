@@ -12,7 +12,9 @@
     "http": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": true,
+      //Proje default olarak tarayıcıyla ayaklanmaması için false set edilir. 
+      //Birden çok mikroservis ayağa kalktığında tarayıcıların açılmasını önlemek amaçlanır.
+      "launchBrowser": false,
       "launchUrl": "swagger",
       "applicationUrl": "http://localhost:5031",
       "environmentVariables": {
@@ -21,7 +23,7 @@
     },
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
