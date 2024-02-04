@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{4C87DCBB-3648-4B67-8E02-5FF65F5EC5A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catolog", "Catolog", "{ECAAC4A6-E55D-4A2A-B8DC-A538BF403E5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Services.Catolog", "Services\Catolog\FreeCourse.Services.Catolog\FreeCourse.Services.Catolog.csproj", "{DF55B2DE-7748-4129-AD31-15B6FDEA79D5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF55B2DE-7748-4129-AD31-15B6FDEA79D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF55B2DE-7748-4129-AD31-15B6FDEA79D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF55B2DE-7748-4129-AD31-15B6FDEA79D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF55B2DE-7748-4129-AD31-15B6FDEA79D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ECAAC4A6-E55D-4A2A-B8DC-A538BF403E5D} = {4C87DCBB-3648-4B67-8E02-5FF65F5EC5A9}
+		{DF55B2DE-7748-4129-AD31-15B6FDEA79D5} = {ECAAC4A6-E55D-4A2A-B8DC-A538BF403E5D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {82D4C131-D788-487D-A396-F44C175233F1}
+	EndGlobalSection
+EndGlobal
