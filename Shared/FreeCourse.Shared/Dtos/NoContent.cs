@@ -6,5 +6,6 @@ using System.Threading.Tasks;
 
 namespace FreeCourse.Shared.Dtos {
     public class NoContent {
+        //Herhangi bir model ile dönüş yapılmayacak response nesnelerinde kullanılabilir.
     }
 }
