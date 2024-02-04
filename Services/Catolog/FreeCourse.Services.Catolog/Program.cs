@@ -1,3 +1,5 @@
+using FreeCourse.Services.Catolog.Settings;
+using Microsoft.Extensions.Options;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
+builder.Services.AddSingleton<IDatabaseSettings>(sp => {
+    //GetRequiredService -> ilgili servisi bulamazsa hata fýrlatýr
+    return sp.GetRequiredService<IOptions<IDatabaseSettings>>().Value;
+    //herhangi bir class ctor'ýnda IDatabaseSettings geçtipi anda dolu bir databasesetting verisi gelecektir.
+});
 
 var app = builder.Build();
 
