@@ -17,9 +17,10 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
 builder.Services.AddSingleton<IDatabaseSettings>(sp => {
     //GetRequiredService -> ilgili servisi bulamazsa hata fýrlatýr
-    return sp.GetRequiredService<IOptions<IDatabaseSettings>>().Value;
+    return sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;
     //herhangi bir class ctor'ýnda IDatabaseSettings geçtipi anda dolu bir databasesetting verisi gelecektir.
 });
+
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICourseService, CourseService>();
