@@ -1,3 +1,4 @@
+using FreeCourse.Services.Catolog.Services;
 using FreeCourse.Services.Catolog.Settings;
 using Microsoft.Extensions.Options;
 using System.Reflection;
@@ -20,6 +21,7 @@ builder.Services.AddSingleton<IDatabaseSettings>(sp => {
     //herhangi bir class ctor'ýnda IDatabaseSettings geçtipi anda dolu bir databasesetting verisi gelecektir.
 });
 
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
