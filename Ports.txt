@@ -1,2 +1,10 @@
 Services
 -Catolog.API => 5031 (http://localhost:5031/swagger/index.html)
+
+
+Identiy Server 4 Templates
+- https://github.com/IdentityServer/IdentityServer4.Templates
+- install edebilmek için dotnet new -i identityserver4.templates
+- template install edildikten sonra kurulacak olan klasör içerisinde dotnet new is4aspid --name Base.Microservices.IdentityServer komutu çalýþtýrýlabilir 
+- Solition içerisinde bir IdentityServer klasörü açýlýr ve Add Existing proje ile oluþan tempale identity server projesi seçilerek eklenmesi saðlanýr. 
+
