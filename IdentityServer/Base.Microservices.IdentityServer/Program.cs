@@ -2,7 +2,11 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using Base.Microservices.IdentityServer.Data;
+using Base.Microservices.IdentityServer.Models;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -37,23 +41,26 @@ namespace Base.Microservices.IdentityServer
 
             try
             {
-                var seed = args.Contains("/seed");
-                if (seed)
-                {
-                    args = args.Except(new[] { "/seed" }).ToArray();
-                }
-
+              
                 var host = CreateHostBuilder(args).Build();
 
-                if (seed)
-                {
-                    Log.Information("Seeding database...");
-                    var config = host.Services.GetRequiredService<IConfiguration>();
-                    var connectionString = config.GetConnectionString("DefaultConnection");
-                    SeedData.EnsureSeedData(connectionString);
-                    Log.Information("Done seeding database.");
-                    return 0;
+                //Migration işleminin otomatize edilmesi
+                //db yoksa oluşsun mig varsa yapılsın
+                using (var scope = host.Services.CreateScope()) {
+                    var serviceProvider = scope.ServiceProvider;
+
+                    var applicationDbContext = serviceProvider.GetRequiredService<ApplicationDbContext>();
+
+                    applicationDbContext.Database.Migrate();
+
+                    var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+                    //veritabanında kullanıcı yoksa oluşturma işlemi
+                    if (!userManager.Users.Any()) {
+                        userManager.CreateAsync(new ApplicationUser { UserName = "muratkondu", Email = "muratkondu@outlook.com", City = "İzmir" }, "7HaKiqi=U=").Wait();
+                    }
                 }
+
 
                 Log.Information("Starting host...");
                 host.Run();
