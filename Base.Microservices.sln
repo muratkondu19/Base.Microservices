@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{4C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catolog", "Catolog", "{ECAAC4A6-E55D-4A2A-B8DC-A538BF403E5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Services.Catolog", "Services\Catolog\FreeCourse.Services.Catolog\FreeCourse.Services.Catolog.csproj", "{DF55B2DE-7748-4129-AD31-15B6FDEA79D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreeCourse.Services.Catolog", "Services\Catolog\FreeCourse.Services.Catolog\FreeCourse.Services.Catolog.csproj", "{DF55B2DE-7748-4129-AD31-15B6FDEA79D5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{D89F4A48-3DCE-4F79-9244-6668997F2F61}"
 	ProjectSection(SolutionItems) = preProject
@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{D89F4A48
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{197A6619-777E-457C-B361-05746341FCA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Shared", "Shared\FreeCourse.Shared\FreeCourse.Shared.csproj", "{80221C0E-7BF8-4548-9A66-F0E67ACFC0F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreeCourse.Shared", "Shared\FreeCourse.Shared\FreeCourse.Shared.csproj", "{80221C0E-7BF8-4548-9A66-F0E67ACFC0F5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityServer", "{93577F93-9583-4622-9852-470CA79CDEC7}"
 EndProject

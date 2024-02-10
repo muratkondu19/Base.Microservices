@@ -8,3 +8,8 @@ Identiy Server 4 Templates
 - template install edildikten sonra kurulacak olan klasör içerisinde dotnet new is4aspid --name Base.Microservices.IdentityServer komutu çalıştırılabilir 
 - Solition içerisinde bir IdentityServer klasörü açılır ve Add Existing proje ile oluşan tempale identity server projesi seçilerek eklenmesi sağlanır. 
 
+Identity Server ile kullanılacak yöntemler
+Client credentials-> client id / client secret bilgieri asp.mvc -> identity server 
+Resource owner credentials -> client id /client secret /email / password bilgileri asp.mvc -> identity server
+Catolog.Api--> Client 
+PhotoStock.Api -> Client 
