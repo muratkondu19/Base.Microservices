@@ -27,5 +27,17 @@ namespace FreeCourse.PhotoStock.Controllers {
 
             return CreateActionResultInstance(Response<PhotoDto>.Fail("photo is empty", 400));
         }
+
+        public IActionResult PhotoDelete(string photoUrl) {
+            //combine verilen değerleri birleştirir
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/photos", photoUrl);
+            if (!System.IO.File.Exists(path)) {//path varlığını kontrol eder 
+                return CreateActionResultInstance(Response<NoContent>.Fail("photo not found", 404));
+            }
+
+            System.IO.File.Delete(path);
+
+            return CreateActionResultInstance(Response<NoContent>.Success(204));
+        }
     }
 }
