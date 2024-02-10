@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Base.Microservices.IdentityServer.Services;
 
 namespace Base.Microservices.IdentityServer
 {
@@ -57,6 +58,9 @@ namespace Base.Microservices.IdentityServer
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryClients(Config.Clients)
                 .AddAspNetIdentity<ApplicationUser>();
+
+            //resource owner crendential granttype ile istek yapıldığında bu class devreye girecek ve kullanıcıyı doğrulayıp token döndürecek 
+            builder.AddResourceOwnerValidator<IdentityResourceOwnerPasswordValidator>();
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
