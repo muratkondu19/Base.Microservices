@@ -18,3 +18,17 @@ Identity Server Üzerinden Client Token Alma
 https://identityserver4.readthedocs.io/en/latest/endpoints/token.html adresindeki dokumandan yaralanýlýr. 
 https://localhost:5001/.well-known/openid-configuration idserver kapsamýndaki adreslere eriþim
 https://localhost:5001/connect/token -> servisine giderek client_id client_secret grant_type body alanýnda belirtilerek configte yer alan deðerlerimiz ve client_credentials grant type ile client için token alabiliriz. 
+
+User Signup Ýþlemi
+https://localhost:5001/api/user/signup endpoint kullanýlýr
+body alaný json : 
+{
+    "UserName":"muratkondupost",
+    "Email":"murat.kondu.mk@hotmail.com",
+    "Password":"7HaKiqi=U=",
+    "City":"Berlin"
+}
+https://localhost:5001/connect/token adresinden client token alýnýr alýnan token api/user/signup endpoint oauth2.0 token olarak kullanýlýp istek atýldýðýnda isgnup iþlemi gerçekleþir 
+
+
+

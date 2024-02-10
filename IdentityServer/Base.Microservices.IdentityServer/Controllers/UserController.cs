@@ -10,7 +10,8 @@ using Base.Microservices.IdentityServer.Dtos;
 using FreeCourse.Shared.Dtos;
 
 namespace Base.Microservices.IdentityServer.Controllers {
-    [Authorize(LocalApi.PolicyName)]
+    [Authorize(LocalApi.PolicyName)] //Authorize işleminin tanımlanması
+    //Gelen token içerisinde scope olarak IdentityServerApi bekler, bunu da startupda yazılan AddLocalApiAuthentication ile sağlamış oluyoruz
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class UserController : ControllerBase {

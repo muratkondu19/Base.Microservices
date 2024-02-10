@@ -28,6 +28,10 @@ namespace Base.Microservices.IdentityServer
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //authenticaton işlemi gerçekleşeceği belirtildi 
+            //controller üzerinde authorize attr kullanılabilir
+            // [Authorize(LocalApi.PolicyName)] -> AddLocalApiAuthentication'nun tarafından eklenen policy controllerda kullanılmaktadır 
+            services.AddLocalApiAuthentication();
             services.AddControllersWithViews();
 
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -82,6 +86,7 @@ namespace Base.Microservices.IdentityServer
 
             app.UseRouting();
             app.UseIdentityServer();
+            app.UseAuthentication(); //auth eklenmesi
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
