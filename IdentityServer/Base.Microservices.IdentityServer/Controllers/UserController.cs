@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Base.Microservices.IdentityServer.Dtos;
 using FreeCourse.Shared.Dtos;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Base.Microservices.IdentityServer.Controllers {
     [Authorize(LocalApi.PolicyName)] //Authorize işleminin tanımlanması
@@ -37,6 +38,19 @@ namespace Base.Microservices.IdentityServer.Controllers {
             }
 
             return NoContent();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetUser() {
+            var userIdClaim = User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Sub);
+
+            if (userIdClaim == null) return BadRequest();
+
+            var user = await _userManager.FindByIdAsync(userIdClaim.Value);
+
+            if (user == null) return BadRequest();
+
+            return Ok(new { Id = user.Id, UserName = user.UserName, Email = user.Email, City = user.City });
         }
 
     }
