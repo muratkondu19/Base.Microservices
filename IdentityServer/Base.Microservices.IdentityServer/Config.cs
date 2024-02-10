@@ -37,6 +37,7 @@ namespace Base.Microservices.IdentityServer {
             };
 
         public static IEnumerable<Client> Clients =>
+            //Client tanımlama işlemleri 
             new Client[]
             {
                 new Client
@@ -45,6 +46,8 @@ namespace Base.Microservices.IdentityServer {
                     ClientId="WebMvcClient",
                     ClientSecrets= {new Secret("secret".Sha256())},
                     AllowedGrantTypes= GrantTypes.ClientCredentials,
+                    //izin verilen scope bilgileri
+                    //client id ve secret ile istek atılınca hangi api'lere erişim yapılabileceği bilgisi 
                     AllowedScopes={ "catalog_fullpermission","photo_stock_fullpermission",IdentityServerConstants.LocalApi.ScopeName }
                 },
                    new Client

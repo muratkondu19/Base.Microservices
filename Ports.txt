@@ -13,3 +13,8 @@ Client credentials-> client id / client secret bilgieri asp.mvc -> identity serv
 Resource owner credentials -> client id /client secret /email / password bilgileri asp.mvc -> identity server
 Catolog.Api--> Client 
 PhotoStock.Api -> Client 
+
+Identity Server Üzerinden Client Token Alma
+https://identityserver4.readthedocs.io/en/latest/endpoints/token.html adresindeki dokumandan yaralanýlýr. 
+https://localhost:5001/.well-known/openid-configuration idserver kapsamýndaki adreslere eriþim
+https://localhost:5001/connect/token -> servisine giderek client_id client_secret grant_type body alanýnda belirtilerek configte yer alan deðerlerimiz ve client_credentials grant type ile client için token alabiliriz. 
