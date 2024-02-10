@@ -18,6 +18,7 @@ namespace Base.Microservices.IdentityServer {
         };
 
         public static IEnumerable<IdentityResource> IdentityResources =>
+            //cleintlerin kullanıcının hangi bilgilerine erişebileceği bilgisi tanımlanır 
                    new IdentityResource[]
                    {
                        new IdentityResources.Email(),
@@ -58,6 +59,10 @@ namespace Base.Microservices.IdentityServer {
                     ClientSecrets= {new Secret("secret".Sha256())},
                     AllowedGrantTypes= GrantTypes.ResourceOwnerPassword,
                     AllowedScopes={IdentityServerConstants.StandardScopes.Email, IdentityServerConstants.StandardScopes.OpenId,IdentityServerConstants.StandardScopes.Profile, IdentityServerConstants.StandardScopes.OfflineAccess, IdentityServerConstants.LocalApi.ScopeName,"roles" },
+                    //OfflineAccess refresh token işlemini sağlar 
+                    //token ömrü 1 saat
+                    //refresh token ömrü 60 gün vw 61. gün absolute olacak yani yeniden refresh token alıunacak ömrü uzatılmayacak 
+                    //refresh token yeniden kullanılabilir reuse 
                     AccessTokenLifetime=1*60*60,
                     RefreshTokenExpiration=TokenExpiration.Absolute,
                     AbsoluteRefreshTokenLifetime= (int) (DateTime.Now.AddDays(60)- DateTime.Now).TotalSeconds,
