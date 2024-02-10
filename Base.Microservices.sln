@@ -22,6 +22,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Base.Microservices.IdentityServer", "IdentityServer\Base.Microservices.IdentityServer\Base.Microservices.IdentityServer.csproj", "{B497ECBF-7E44-434C-B932-84E0C343F566}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PhotoStock", "PhotoStock", "{CF604B6F-CA0A-4520-9D33-E1856CF31911}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreeCourse.PhotoStock", "Services\PhotoStock\FreeCourse.PhotoStock\FreeCourse.PhotoStock.csproj", "{E53E2DD2-0312-441D-9651-03477A085025}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +44,10 @@ Global
 		{B497ECBF-7E44-434C-B932-84E0C343F566}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B497ECBF-7E44-434C-B932-84E0C343F566}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B497ECBF-7E44-434C-B932-84E0C343F566}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E53E2DD2-0312-441D-9651-03477A085025}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E53E2DD2-0312-441D-9651-03477A085025}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E53E2DD2-0312-441D-9651-03477A085025}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E53E2DD2-0312-441D-9651-03477A085025}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +57,8 @@ Global
 		{DF55B2DE-7748-4129-AD31-15B6FDEA79D5} = {ECAAC4A6-E55D-4A2A-B8DC-A538BF403E5D}
 		{80221C0E-7BF8-4548-9A66-F0E67ACFC0F5} = {197A6619-777E-457C-B361-05746341FCA0}
 		{B497ECBF-7E44-434C-B932-84E0C343F566} = {93577F93-9583-4622-9852-470CA79CDEC7}
+		{CF604B6F-CA0A-4520-9D33-E1856CF31911} = {4C87DCBB-3648-4B67-8E02-5FF65F5EC5A9}
+		{E53E2DD2-0312-441D-9651-03477A085025} = {CF604B6F-CA0A-4520-9D33-E1856CF31911}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {82D4C131-D788-487D-A396-F44C175233F1}
