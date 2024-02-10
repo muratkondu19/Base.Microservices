@@ -1,6 +1,8 @@
 Services
--Catolog.API => 5031 (http://localhost:5031/swagger/index.html)
-
+--Catolog.API => 5031 (http://localhost:5031/swagger/index.html)
+--Identity.API => http://localhost:5001
+--PhotoStock.API => http://localhost:5140
+--Basket.API => http://localhost:5286
 
 Identiy Server 4 Templates
 - https://github.com/IdentityServer/IdentityServer4.Templates
