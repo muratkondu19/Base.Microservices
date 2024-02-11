@@ -1,5 +1,6 @@
 using FreeCourse.Services.Basket.Services;
 using FreeCourse.Services.Basket.Settings;
+using FreeCourse.Shared.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
@@ -24,6 +25,9 @@ builder.Services.AddSingleton<RedisService>(sp =>
 
     return redis;
 });
+
+//IShared identity servis eklenerek user id deðerini metod üzerinden okuma saðlanacak
+builder.Services.AddScoped<ISharedIdentityService,SharedIdentityService>();
 
 
 var app = builder.Build();
