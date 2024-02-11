@@ -42,7 +42,7 @@ builder.Services.AddScoped<ISharedIdentityService,SharedIdentityService>();
 //mikroservisi koruma altýna alma
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
     options.Authority = builder.Configuration["IdentityServerURL"]; //bu mikroservise tokený kim daðýtýtyor 
-    options.Audience = "resource_catalog"; //birden fazla belirtilemiyor 
+    options.Audience = "basket_fullpermission"; //birden fazla belirtilemiyor 
     options.RequireHttpsMetadata = false; //default https beklediði için false set ediyoruz
 });
 
