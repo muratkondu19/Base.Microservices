@@ -23,6 +23,8 @@ namespace FreeCourse.Services.Order.Domain.OrderAggregate {
         private readonly List<OrderItem> _orderItems;
 
         //kapsülleme işlemi
+        //bu aggregate order item kullanıyorsa başka bir aggregate order item kullanamaz 
+        //başka bir entity adres value object kullanabilir, bir agregate root bir entity kullanıyorsa başkasının bu entityi kullanmaması gerekiyor 
         public IReadOnlyCollection<OrderItem> OrderItems => _orderItems;
 
         public Order() {

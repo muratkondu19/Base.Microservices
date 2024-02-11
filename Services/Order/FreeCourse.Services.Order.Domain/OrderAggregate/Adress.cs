@@ -9,6 +9,8 @@ namespace FreeCourse.Services.Order.Domain.OrderAggregate {
 
     //kimse dışarıdan state değiştirememesi için set private olarak ayarlanır 
     //business kuralları da burda tanımlanacaktır
+
+    //bu value objcet owned olarak işaretlenebilirdi fakat domain katmanı hangi orm aracıyla çalıştığını bilmemeli bağımlılık olmaması gerektiğinden belirtilmedi infrast tarafında dbcontext içerisinde bu tanımlama yapılmıştır 
     public class Address : ValueObject {
         public string Province { get; private set; }
 
