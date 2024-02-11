@@ -17,6 +17,7 @@ namespace Base.Microservices.IdentityServer {
                   new ApiResource("resource_basket"){Scopes={"basket_fullpermission"}},
                      new ApiResource("resource_discount"){Scopes={"discount_fullpermission"}},
                        new ApiResource("resource_order"){Scopes={"order_fullpermission"}},
+                             new ApiResource("resource_payment"){Scopes={"payment_fullpermission"}},
 
                new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
@@ -40,6 +41,7 @@ namespace Base.Microservices.IdentityServer {
                     new ApiScope("basket_fullpermission","Basket API için full erişim"),
                       new ApiScope("discount_fullpermission","Discount API için full erişim"),
                       new ApiScope("order_fullpermission","Order API için full erişim"),
+                      new ApiScope("payment_fullpermission","Payment API için full erişim"),
 
                  //Identity server kendine ait scope tanımı
                 new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
@@ -66,7 +68,7 @@ namespace Base.Microservices.IdentityServer {
                     AllowOfflineAccess=true,
                     ClientSecrets= {new Secret("secret".Sha256())},
                     AllowedGrantTypes= GrantTypes.ResourceOwnerPassword,
-                    AllowedScopes={ "basket_fullpermission", "discount_fullpermission","order_fullpermission", IdentityServerConstants.StandardScopes.Email, IdentityServerConstants.StandardScopes.OpenId,IdentityServerConstants.StandardScopes.Profile, IdentityServerConstants.StandardScopes.OfflineAccess, IdentityServerConstants.LocalApi.ScopeName,"roles" },
+                    AllowedScopes={ "basket_fullpermission", "discount_fullpermission","order_fullpermission", "payment_fullpermission", IdentityServerConstants.StandardScopes.Email, IdentityServerConstants.StandardScopes.OpenId,IdentityServerConstants.StandardScopes.Profile, IdentityServerConstants.StandardScopes.OfflineAccess, IdentityServerConstants.LocalApi.ScopeName,"roles" },
                     //OfflineAccess refresh token işlemini sağlar 
                     //token ömrü 1 saat
                     //refresh token ömrü 60 gün vw 61. gün absolute olacak yani yeniden refresh token alıunacak ömrü uzatılmayacak 
