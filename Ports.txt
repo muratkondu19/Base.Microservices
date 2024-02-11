@@ -5,6 +5,7 @@ Services
 --Basket.API => http://localhost:5286
 --Discount.API => http://localhost:5182
 --Order.API => http://localhost:5041
+--Payment.API => http://localhost:5104
 
 Identiy Server 4 Templates
 - https://github.com/IdentityServer/IdentityServer4.Templates
