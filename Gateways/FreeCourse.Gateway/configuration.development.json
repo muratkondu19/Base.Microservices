@@ -13,8 +13,8 @@
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "GatewayAuthenticationScheme",
-        "AllowedScopes": [ "catalog_fullpermission" ]
+        "AuthenticationProviderKey": "GatewayAuthenticationScheme", //token aud param içerisinde resource_gateway olması gerekmektedir -> program.cs üzerinde tanımlandı
+        "AllowedScopes": [ "catalog_fullpermission" ] //resource_gateway sahip olmasından sonra ilgili scope a da sahip olması gerekmektedir 
       }
     },
     {
