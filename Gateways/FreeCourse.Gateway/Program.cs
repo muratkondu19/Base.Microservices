@@ -1,20 +1,27 @@
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration.AddJsonFile($"configuration.{builder.Environment.EnvironmentName.ToString().ToLower()}.json");
+IConfiguration configuration = new ConfigurationBuilder()
+                            .AddJsonFile($"configuration.{builder.Environment.EnvironmentName}.json", true, true)
+                            .Build();
 
-builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddOcelot(configuration);
 
 builder.Services.AddAuthentication().AddJwtBearer("GatewayAuthenticationScheme", options => {
     options.Authority = builder.Configuration["IdentityServerURL"];
     options.Audience = "resource_gateway";
     options.RequireHttpsMetadata = false;
 });
+
+builder.Logging.AddConsole();
+
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
-await app.UseOcelot();
 
+
+app.UseHttpsRedirection();
+app.UseOcelot().Wait();
 app.Run();
