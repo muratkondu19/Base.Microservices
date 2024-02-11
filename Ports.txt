@@ -4,6 +4,7 @@ Services
 --PhotoStock.API => http://localhost:5140
 --Basket.API => http://localhost:5286
 --Discount.API => http://localhost:5182
+--Order.API => http://localhost:5041
 
 Identiy Server 4 Templates
 - https://github.com/IdentityServer/IdentityServer4.Templates
