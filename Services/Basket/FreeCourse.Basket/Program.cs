@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
+using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,12 +38,16 @@ builder.Services.AddSingleton<RedisService>(sp =>
 });
 
 //IShared identity servis eklenerek user id deðerini metod üzerinden okuma saðlanacak
-builder.Services.AddScoped<ISharedIdentityService,SharedIdentityService>();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ISharedIdentityService, SharedIdentityService>();
 
+builder.Services.AddScoped<IBasketService, BasketService>(); 
+
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub"); //sub claimini mapleyerek identities olarak dönmemesi için
 //mikroservisi koruma altýna alma
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
     options.Authority = builder.Configuration["IdentityServerURL"]; //bu mikroservise tokený kim daðýtýtyor 
-    options.Audience = "basket_fullpermission"; //birden fazla belirtilemiyor 
+    options.Audience = "resource_basket"; //birden fazla belirtilemiyor 
     options.RequireHttpsMetadata = false; //default https beklediði için false set ediyoruz
 });
 
