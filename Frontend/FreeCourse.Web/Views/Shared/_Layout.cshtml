@@ -9,7 +9,7 @@
     <link href="~/lib/bootstrap-5.3.2/bootstrap-5.3.2-dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/lib/bootstrap-5.3.2/bootstrap-5.3.2-dist/css/bootstrap.rtl.css" rel="stylesheet" />
     <link href="~/lib/bootstrap-5.3.2/bootstrap-5.3.2-dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
-   
+
     <link rel="stylesheet" href="~/FreeCourse.Web.styles.css" asp-append-version="true" />
 </head>
 <body>
@@ -30,6 +30,14 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
+                    @if (User.Identity.IsAuthenticated) {
+
+
+                    }
+
+                    else {
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignIn">Giriş Yap</a>
+                    }
                 </div>
             </div>
         </nav>
@@ -53,7 +61,7 @@
     <script src="~/lib/bootstrap-5.3.2/bootstrap-5.3.2-dist/js/bootstrap.esm.min.js"></script>
     <script src="~/lib/bootstrap-5.3.2/bootstrap-5.3.2-dist/js/bootstrap.js"></script>
     <script src="~/lib/bootstrap-5.3.2/bootstrap-5.3.2-dist/js/bootstrap.min.js"></script>
-   
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
