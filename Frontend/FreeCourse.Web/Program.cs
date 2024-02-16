@@ -1,3 +1,4 @@
+using FreeCourse.Web.Handler;
 using FreeCourse.Web.Models;
 using FreeCourse.Web.Services;
 using FreeCourse.Web.Services.Interface;
@@ -17,9 +18,11 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient<IIdentityService, IdentityService>();
 
 var serviceApiSettings = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
+
+//IUserService içerisinde bir metod çalýþtýðýnda ResourceOwnerPasswordTokenHandler bu handlerin çalýþmasý gerektiði ayarlandý
 builder.Services.AddHttpClient<IUserService, UserService>(opt => {
     opt.BaseAddress = new Uri(serviceApiSettings.IdentityBaseUri);
-});
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 
 //AddCookie cookie bazlý yetkilendirme 
