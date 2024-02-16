@@ -41,6 +41,7 @@ builder.Services.AddHttpClient<ICatalogService, CatalogService>(opt => {
 });
 
 builder.Services.AddScoped<ISharedIdentityService, SharedIdentityService>();
+builder.Services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
 
 var app = builder.Build();
 
