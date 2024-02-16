@@ -35,10 +35,11 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     opts.Cookie.Name = "udemywebcookie";
 });
 
+builder.Services.AddScoped<ClientCredentialTokenService>();
 builder.Services.AddHttpClient<ICatalogService, CatalogService>(opt => {
     //gateway conf dosyasýnda yazan url yapýsýný IOptions pattern ile appsettings üzerinden okuma 
     opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Catalog.Path}");
-});
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 builder.Services.AddScoped<ISharedIdentityService, SharedIdentityService>();
 builder.Services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
