@@ -24,6 +24,7 @@ builder.Services.AddHttpClient<IUserService, UserService>(opt => {
     opt.BaseAddress = new Uri(serviceApiSettings.IdentityBaseUri);
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
+builder.Services.AddScoped<ResourceOwnerPasswordTokenHandler>();
 
 //AddCookie cookie bazlý yetkilendirme 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, opts => {
