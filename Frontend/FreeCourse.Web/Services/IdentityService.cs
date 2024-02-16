@@ -79,6 +79,7 @@ namespace FreeCourse.Web.Services {
             if (disco.IsError) {
                 throw disco.Exception;
             }
+            //cookieden refresh token alınır
             var refreshToken = await _httpContextAccessor.HttpContext.GetTokenAsync(OpenIdConnectParameterNames.RefreshToken);
 
             TokenRevocationRequest tokenRevocationRequest = new() {
@@ -89,6 +90,7 @@ namespace FreeCourse.Web.Services {
                 TokenTypeHint = "refresh_token"
             };
 
+            //refresh token revoke edilir access token refresh edilmesi uygun değildir 
             await _httpClient.RevokeTokenAsync(tokenRevocationRequest);
         }
 
