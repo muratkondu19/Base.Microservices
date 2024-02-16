@@ -17,6 +17,7 @@ builder.Services.Configure<ServiceApiSettings>(builder.Configuration.GetSection(
 builder.Services.Configure<ClientSettings>(builder.Configuration.GetSection("ClientSettings"));
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient<IIdentityService, IdentityService>();
+builder.Services.AddAccessTokenManagement();
 
 var serviceApiSettings = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
 
@@ -35,7 +36,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     opts.Cookie.Name = "udemywebcookie";
 });
 
-builder.Services.AddScoped<ClientCredentialTokenService>();
+builder.Services.AddScoped<ClientCredentialTokenHandler>();
 builder.Services.AddHttpClient<ICatalogService, CatalogService>(opt => {
     //gateway conf dosyasýnda yazan url yapýsýný IOptions pattern ile appsettings üzerinden okuma 
     opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Catalog.Path}");
