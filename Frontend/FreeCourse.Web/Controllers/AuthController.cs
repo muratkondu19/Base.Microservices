@@ -34,5 +34,13 @@ namespace FreeCourse.Web.Controllers {
 
             return RedirectToAction(nameof(Index), "Home");
         }
+
+        public async Task<IActionResult> Logout() {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await _identityService.RevokeRefreshToken();
+            return RedirectToAction(nameof(HomeController.Index), "Home");
+        }
     }
+
+
 }
