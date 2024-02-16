@@ -1,3 +1,4 @@
+using FreeCourse.Shared.Services;
 using FreeCourse.Web.Handler;
 using FreeCourse.Web.Models;
 using FreeCourse.Web.Services;
@@ -38,6 +39,8 @@ builder.Services.AddHttpClient<ICatalogService, CatalogService>(opt => {
     //gateway conf dosyasýnda yazan url yapýsýný IOptions pattern ile appsettings üzerinden okuma 
     opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Catalog.Path}");
 });
+
+builder.Services.AddScoped<ISharedIdentityService, SharedIdentityService>();
 
 var app = builder.Build();
 
