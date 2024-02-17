@@ -26,9 +26,12 @@ namespace FreeCourse.Web.Controllers {
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error() {
+            //fırlatılan hatanın yakalanması 
             var errorFeature = HttpContext.Features.Get<IExceptionHandlerFeature>();
 
+            //fırlatılan hata unauth hatası ise bu bizim fırlattığımız hata oluyor 
             if (errorFeature != null && errorFeature.Error is UnAuthorizeException) {
+                //hata unauth ise logout yap
                 return RedirectToAction(nameof(AuthController.Logout), "Auth");
             }
 
