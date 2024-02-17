@@ -96,7 +96,15 @@ namespace FreeCourse.Web.Services {
 
         public async Task<bool> SaveOrUpdate(BasketViewModel basketViewModel) {
             var response = await _httpClient.PostAsJsonAsync<BasketViewModel>("baskets", basketViewModel);
+            if (!response.IsSuccessStatusCode) {
+                // Log the details of the response
+                var content = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"HTTP status code: {response.StatusCode}");
+                Console.WriteLine($"Response content: {content}");
 
+                // Throw an exception or handle the error accordingly
+                // throw new Exception($"Failed to create course. Status code: {response.StatusCode}. Content: {content}");
+            }
             return response.IsSuccessStatusCode;
         }
     }
