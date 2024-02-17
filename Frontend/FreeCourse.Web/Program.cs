@@ -44,7 +44,9 @@ builder.Services.AddHttpClient<ICatalogService, CatalogService>(opt => {
 
 builder.Services.AddScoped<ISharedIdentityService, SharedIdentityService>();
 builder.Services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
-
+builder.Services.AddHttpClient<IPhotoStockService, PhotoStockService>(opt => {
+    opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
