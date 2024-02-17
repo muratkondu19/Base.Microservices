@@ -6,5 +6,6 @@
         public string CVV { get; set; }
         public decimal TotalPrice { get; set; }
 
+
     }
 }
