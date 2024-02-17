@@ -16,13 +16,12 @@ namespace FreeCourse.Web.Models.Catalogs {
 
         public string UserId { get; set; }
 
-        public string Picture { get; set; }
+        public string? Picture { get; set; }
         public FeatureViewModel Feature { get; set; }
 
         [Display(Name = "Kurs kategori")]
         public string CategoryId { get; set; }
 
-        [Display(Name = "Kurs Resim")]
-        public IFormFile PhotoFormFile { get; set; }
+
     }
 }
