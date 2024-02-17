@@ -3,8 +3,16 @@ using FreeCourse.Web.Services.Interface;
 
 namespace FreeCourse.Web.Services {
     public class PaymentService : IPaymentService {
-        public Task<bool> ReceivePayment(PaymentInfoInput paymentInfoInput) {
-            throw new NotImplementedException();
+        private readonly HttpClient _httpClient;
+
+        public PaymentService(HttpClient httpClient) {
+            _httpClient = httpClient;
+        }
+
+        public async Task<bool> ReceivePayment(PaymentInfoInput paymentInfoInput) {
+            var response = await _httpClient.PostAsJsonAsync<PaymentInfoInput>("fakepayments", paymentInfoInput);
+
+            return response.IsSuccessStatusCode;
         }
     }
 }
