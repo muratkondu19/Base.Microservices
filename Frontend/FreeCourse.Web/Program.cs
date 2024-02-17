@@ -8,11 +8,13 @@ using FreeCourse.Web.Services.Interface;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.Configuration;
 using System.Configuration;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddFluentValidationAutoValidation();
 
 
 builder.Services.Configure<ServiceApiSettings>(builder.Configuration.GetSection("ServiceApiSettings"));
@@ -33,7 +35,6 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     opts.SlidingExpiration = true;
     opts.Cookie.Name = "udemywebcookie";
 });
-
 
 
 var app = builder.Build();
