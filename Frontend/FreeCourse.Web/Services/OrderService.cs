@@ -64,8 +64,35 @@ namespace FreeCourse.Web.Services {
             return response.Data;
         }
 
-        public Task<OrderSuspendViewModel> SuspendOrder(CheckoutInfoInput checkoutInfoInput) {
-            throw new NotImplementedException();
+        public async Task<OrderSuspendViewModel> SuspendOrder(CheckoutInfoInput checkoutInfoInput) {
+            var basket = await _basketService.Get();
+            var orderCreateInput = new OrderCreateInput() {
+                BuyerId = _sharedIdentityService.GetUserId,
+                Address = new AddressCreateInput { Province = checkoutInfoInput.Province, District = checkoutInfoInput.District, Street = checkoutInfoInput.Street, Line = checkoutInfoInput.Line, ZipCode = checkoutInfoInput.ZipCode },
+            };
+
+            basket.BasketItems.ForEach(x => {
+                var orderItem = new OrderItemCreateInput { ProductId = x.CourseId, Price = x.GetCurrentPrice, PictureUrl = "", ProductName = x.CourseName };
+                orderCreateInput.OrderItems.Add(orderItem);
+            });
+
+            var paymentInfoInput = new PaymentInfoInput() {
+                CardName = checkoutInfoInput.CardName,
+                CardNumber = checkoutInfoInput.CardNumber,
+                Expiration = checkoutInfoInput.Expiration,
+                CVV = checkoutInfoInput.CVV,
+                TotalPrice = basket.TotalPrice,
+                Order = orderCreateInput
+            };
+
+            var responsePayment = await _paymentService.ReceivePayment(paymentInfoInput);
+
+            if (!responsePayment) {
+                return new OrderSuspendViewModel() { Error = "Ödeme alınamadı", IsSuccessful = false };
+            }
+
+            await _basketService.Delete();
+            return new OrderSuspendViewModel() { IsSuccessful = true };
         }
     }
 }
