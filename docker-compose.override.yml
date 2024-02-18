@@ -110,3 +110,15 @@ services:
       - RabbitMQUrl=rabbitmq
     ports:
       - "5104:80"
+  order.api:
+    container_name: order.api
+    restart: on-failure
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - IdentityServerURL=http://identityserver.api
+      - RabbitMQUrl=rabbitmq
+      - "ConnectionStrings:DefaultConnection=Server=orderdb,1444;Database=OrderDb; User=sa; Password=Micro123*"
+    ports:
+      - "5041:80"
+    depends_on:
+      - orderdb
