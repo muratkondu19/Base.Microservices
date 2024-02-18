@@ -81,3 +81,14 @@ services:
       - "5286:80"
     depends_on:
       - basketdb
+  photostock.api:
+    container_name: photostock.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - IdentityServerURL=http://identityserver.api
+    ports:
+      - "5140:80"
+    volumes:
+      - type: bind
+        source: C:\Users\murat\source\photos
+        target: /app/wwwroot/photos
