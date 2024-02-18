@@ -61,6 +61,7 @@ namespace Base.Microservices.IdentityServer
 
             //resource owner crendential granttype ile istek yapıldığında bu class devreye girecek ve kullanıcıyı doğrulayıp token döndürecek 
             builder.AddResourceOwnerValidator<IdentityResourceOwnerPasswordValidator>();
+            builder.AddExtensionGrantValidator<TokenExchangeExtensionGrantValidator>();
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
